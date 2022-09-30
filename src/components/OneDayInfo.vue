@@ -111,15 +111,6 @@ const initDonutChart = () => {
           .innerRadius(innerRadiusInterpolation(t))
           .outerRadius(outerRadiusInterpolation(t));
     });
-
-  // legend icons
-  d3.xml("src/assets/trash.svg").then((iconData) => {
-    iconData.documentElement.setAttribute("width", "100");
-    iconData.documentElement.setAttribute("height", "100");
-    iconData.documentElement.setAttribute("x", "-50");
-    iconData.documentElement.setAttribute("y", "-50");
-    svg.node().append(iconData.documentElement);
-  });
 };
 </script>
 
