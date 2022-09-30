@@ -1,0 +1,8 @@
+<?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1659885174164" class="icon" width="200" height="200" viewBox="0 0 130 60" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="43750" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><style type="text/css">@font-face { font-weight: 400; font-style: normal; font-family: Circular-Loom; src: url("https://cdn.loom.com/assets/fonts/circular/CircularXXWeb-Book-cd7d2bcec649b1243839a15d5eb8f0a3.woff2") format("woff2"); }
+@font-face { font-weight: 500; font-style: normal; font-family: Circular-Loom; src: url("https://cdn.loom.com/assets/fonts/circular/CircularXXWeb-Medium-d74eac43c78bd5852478998ce63dceb3.woff2") format("woff2"); }
+@font-face { font-weight: 700; font-style: normal; font-family: Circular-Loom; src: url("https://cdn.loom.com/assets/fonts/circular/CircularXXWeb-Bold-83b8ceaf77f49c7cffa44107561909e4.woff2") format("woff2"); }
+@font-face { font-weight: 900; font-style: normal; font-family: Circular-Loom; src: url("https://cdn.loom.com/assets/fonts/circular/CircularXXWeb-Black-bf067ecb8aa777ceb6df7d72226febca.woff2") format("woff2"); }
+@font-face { font-family: feedback-iconfont; src: url("//at.alicdn.com/t/font_1031158_u69w8yhxdu.woff2?t=1630033759944") format("woff2"), url("//at.alicdn.com/t/font_1031158_u69w8yhxdu.woff?t=1630033759944") format("woff"), url("//at.alicdn.com/t/font_1031158_u69w8yhxdu.ttf?t=1630033759944") format("truetype"); }
+</style></defs>
+<path d="M55.5 55.7143C40.7805 55.7143 26.6638 49.8444 16.2556 39.396C5.84731 28.9475 0 14.7764 0 0H111C111 14.7764 105.153 28.9475 94.7444 39.396C84.3362 49.8444 70.2195 55.7143 55.5 55.7143ZM74 65H37V55.7143H74V65Z"/>
+</svg>
