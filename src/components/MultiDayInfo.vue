@@ -134,7 +134,7 @@ const initBarChart = () => {
   <div>
     <div class="header">
       <div class="title">
-        Food waste percentage per capita of the this month ({{
+        Food waste percentage per capita of this month ({{
           trendList[0].date
         }}
         ~ {{ trendList[trendList.length - 1].date }})
