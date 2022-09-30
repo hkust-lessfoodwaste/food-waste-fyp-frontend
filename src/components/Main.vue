@@ -15,17 +15,21 @@ const dailyData = reactive({});
 const monthlyData = reactive({});
 const isLoaded = ref(false);
 
-let currPage = ref(0);
+const currPage = ref(0);
+const currURL = window.location.search;
+
+const urlParams = new URLSearchParams(currURL);
+const slideSpeed = urlParams.has("speed") ? Number(urlParams.get("speed")) : 10000
+
 setInterval(() => {
   currPage.value = (currPage.value + 1) % 2;
-}, 10000);
+}, slideSpeed);
 
 onMounted(async () => {
   let dailyRes = await get("poster/getDaily", null);
   dailyData.value = dailyRes;
   let monthlyRes = await get("poster/getMonthly", null);
   monthlyData.value = monthlyRes;
-  console.log(monthlyData.value)
   isLoaded.value = true;
 });
 </script>
