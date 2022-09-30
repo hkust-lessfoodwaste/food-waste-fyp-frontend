@@ -43,6 +43,7 @@ const color = d3
   .range([highWasteColor, mediumWasteColor, lowWasteColor]);
 
 const initBarChart = () => {
+  d3.select("#bar-chart").selectAll("svg").remove();
   var svg = d3
     .select("#bar-chart")
     .append("svg")

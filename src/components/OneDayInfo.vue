@@ -57,6 +57,7 @@ onMounted(() => {
 });
 
 const initDonutChart = () => {
+  d3.select("#pie-chart").selectAll("svg").remove();
   const svg = d3
     .select("#pie-chart")
     .append("svg")
