@@ -3,8 +3,10 @@ const path = require('path');
 import vue from '@vitejs/plugin-vue'
 import svgLoader from 'vite-svg-loader'
 
+
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: process.env.NODE_ENV === 'production' ? '/food-waste-fyp-frontend/' : '/',
   plugins: [vue(), svgLoader()],
   resolve: {
     alias: {

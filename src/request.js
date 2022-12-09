@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const server = "https://food-waste-management-fyp.herokuapp.com/v0/";
+export const server = "https://api.foodwaste.hkustvis.org/";
 
 export function get(url, params) {
   return axios

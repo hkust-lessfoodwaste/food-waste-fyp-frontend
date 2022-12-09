@@ -4,15 +4,10 @@ import { onMounted, ref } from "vue";
 import bowl from "@/assets/bowl.svg";
 
 const props = defineProps({
-  monthlyData: Object,
+  monthlyData: Array,
 });
-const {
-  trend,
-  currRatioMean,
-  prevRatioMean,
-  recordRatioLow,
-  recordRatioHigh,
-} = props.monthlyData;
+console.log(props)
+const trend = props.monthlyData;
 const trendList = [...trend].reverse();
 onMounted(() => {
   initBarChart();
@@ -34,6 +29,7 @@ const groupData = trendList.map((ele, idx) => {
   return dailyData;
 });
 const maxVal = Math.max(...ratioData);
+const currRatioMean = ratioData.reduce((a, b) => a + b, 0) / ratioData.length;
 const subgroups = Object.keys(groupData[0]);
 const groups = groupData.map((ele, idx) => idx); // x axis
 const stackedData = d3.stack().keys(subgroups)(groupData);
@@ -56,7 +52,7 @@ const initBarChart = () => {
   var x = d3.scaleBand().domain(groups).range([0, width]).padding([0.2]);
   var y = d3
     .scaleLinear()
-    .domain([0, Math.min(recordRatioHigh, maxVal * 1.5)]) // 暂时加一个maxVal * 1.5对限制，以免历史极值过高使比例尺失调
+    .domain([0, maxVal * 1.1])
     .range([height, 0]);
   svg
     .append("g")
@@ -103,18 +99,18 @@ const initBarChart = () => {
 
   setTimeout(() => {}, 1000);
 
-  svg
-    .append("g")
-    .attr("transform", "translate(0, " + y(prevRatioMean) + ")")
-    .append("line")
-    .attr("x2", 0)
-    .transition()
-    .delay(800)
-    .duration(1000)
-    .attr("x2", width)
-    .style("stroke", "gray")
-    .style("stroke-width", "2px")
-    .style("stroke-dasharray", "4");
+  // svg
+  //   .append("g")
+  //   .attr("transform", "translate(0, " + y(prevRatioMean) + ")")
+  //   .append("line")
+  //   .attr("x2", 0)
+  //   .transition()
+  //   .delay(800)
+  //   .duration(1000)
+  //   .attr("x2", width)
+  //   .style("stroke", "gray")
+  //   .style("stroke-width", "2px")
+  //   .style("stroke-dasharray", "4");
 
   svg
     .append("g")
@@ -156,10 +152,10 @@ const initBarChart = () => {
           <div class="box" :style="'background-color:' + lowWasteColor" />
           <div class="legend-title">light/no waste</div>
         </div>
-        <div class="icon-outer">
+        <!-- <div class="icon-outer">
           <hr class="dashedline" />
           <div class="legend-title">last month's average</div>
-        </div>
+        </div> -->
         <div class="icon-outer">
           <hr class="line" />
           <div class="legend-title">this month's average</div>

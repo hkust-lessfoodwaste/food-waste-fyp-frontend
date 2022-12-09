@@ -67,7 +67,7 @@ const initDonutChart = () => {
     .attr("transform", `translate(${pieWidth / 2},${pieHeight / 2})`);
 
   let generator = d3.pie().sort(null);
-  let typeValueList = Object.values(typePercentage)
+  let typeValueList = [typePercentage.rice, typePercentage.vegetables, typePercentage.meat]
   let chart = generator(typeValueList);
   
   let arcs = svg
@@ -157,20 +157,20 @@ const initDonutChart = () => {
             <div class="waste-type">
               <riceicon class="icon" :fill="riceColor" />
               <div class="title">
-                rice - {{ (typePercentage.rice * 100).toFixed(1) }}%
+                rice - {{ (typePercentage.rice / (typePercentage.rice + typePercentage.vegetables + typePercentage.meat) * 100).toFixed(1) }}%
               </div>
             </div>
             <div class="waste-type">
               <vegeicon class="icon" :fill="vegeColor" />
               <div class="title">
                 vegetables -
-                {{ (typePercentage.vegetables * 100).toFixed(1) }}%
+                {{ (typePercentage.vegetables / (typePercentage.rice + typePercentage.vegetables + typePercentage.meat) * 100).toFixed(1) }}%
               </div>
             </div>
             <div class="waste-type">
               <meaticon class="icon" :fill="meatColor" />
               <div class="title">
-                meat - {{ (typePercentage.meat * 100).toFixed(1) }}%
+                meat - {{ (typePercentage.meat / (typePercentage.rice + typePercentage.vegetables + typePercentage.meat) * 100).toFixed(1) }}%
               </div>
             </div>
           </div>

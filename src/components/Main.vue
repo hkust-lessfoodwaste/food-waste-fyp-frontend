@@ -12,7 +12,7 @@ import takeaway from "@/assets/takeaway.svg";
 import { get } from "@/request";
 
 const dailyData = reactive({});
-const monthlyData = reactive({});
+const monthlyData = reactive([]);
 const isLoaded = ref(false);
 
 const currPage = ref(0);
@@ -26,10 +26,21 @@ setInterval(() => {
 }, slideSpeed);
 
 onMounted(async () => {
-  let dailyRes = await get("poster/getDaily", null);
+  let currDate = {year: 2021, month: 10, day: 1}
+  let currDateObj = new Date(currDate.year, currDate.month - 1, currDate.day)
+  let dailyRes = await get("fyp_dashboard_food_waste_percentage", currDate);
+
+  monthlyData.push(dailyRes)
+  for (let i = 0; i < 30; i ++) {
+    currDateObj = new Date(currDateObj.setDate(currDateObj.getDate()-1))
+    let dailyRes = await get("fyp_dashboard_food_waste_percentage", {year: 1900 + currDateObj.getYear(), month: currDateObj.getMonth() + 1, day: currDateObj.getDate()});
+    monthlyData.push(dailyRes)
+  }
+  
+  console.log(monthlyData)
   dailyData.value = dailyRes;
-  let monthlyRes = await get("poster/getMonthly", null);
-  monthlyData.value = monthlyRes;
+  // let monthlyRes = await get("poster/getMonthly", null);
+  // monthlyData.value = monthlyList;
   isLoaded.value = true;
 });
 </script>
@@ -50,7 +61,7 @@ onMounted(async () => {
         <multi-day-info
           class="main-content"
           v-if="currPage === 1"
-          :monthlyData="monthlyData.value"
+          :monthlyData="monthlyData"
         />
       </div>
       <div class="footer">
@@ -90,7 +101,7 @@ onMounted(async () => {
         </div>
       </div>
     </div>
-    <div v-else>Food Waste FYP. loading resources...</div>
+    <div v-else>Food Waste FYP. loading resources... {{(monthlyData.length / 30 * 100).toFixed(0)}}%</div>
   </div>
 </template>
 
