@@ -19,17 +19,17 @@ const width = (window.innerWidth / 10) * 7.5,
   height = (window.innerHeight / 10) * 4,
   marginLeft = (window.innerWidth / 10) * 0.5,
   marginTop = (window.innerWidth / 10) * 0.25;
-const ratioData = trendList.map((ele) => ele.wasteRatio);
+const weightData = trendList.map((ele) => ele.weight);
 const xLabelList = trendList.map((ele) => ele.date);
 const groupData = trendList.map((ele, idx) => {
   let dailyData = {};
   Object.keys(ele["levelPercentage"]).forEach((level) => {
-    dailyData[level] = ele["levelPercentage"][level] * ratioData[idx];
+    dailyData[level] = ele["levelPercentage"][level] * weightData[idx];
   });
   return dailyData;
 });
-const maxVal = Math.max(...ratioData);
-const currRatioMean = ratioData.reduce((a, b) => a + b, 0) / ratioData.length;
+const maxVal = Math.max(...weightData);
+const currWeightMean = weightData.reduce((a, b) => a + b, 0) / weightData.length;
 const subgroups = Object.keys(groupData[0]);
 const groups = groupData.map((ele, idx) => idx); // x axis
 const stackedData = d3.stack().keys(subgroups)(groupData);
@@ -62,7 +62,7 @@ const initBarChart = () => {
   // Add Y axis
   svg
     .append("g")
-    .call(d3.axisLeft(y).tickFormat((d, i) => (d * 100).toFixed(0) + "%"));
+    .call(d3.axisLeft(y).tickFormat((d, i) => (d).toFixed(0) + "KG"));
 
   svg
     .append("g")
@@ -114,7 +114,7 @@ const initBarChart = () => {
 
   svg
     .append("g")
-    .attr("transform", "translate(0, " + y(currRatioMean) + ")")
+    .attr("transform", "translate(0, " + y(currWeightMean) + ")")
     .append("line")
     .attr("x2", 0)
     .transition()
@@ -130,7 +130,7 @@ const initBarChart = () => {
   <div>
     <div class="header">
       <div class="title">
-        Food waste percentage per capita of this month ({{
+        Weight estimation of the food waste of this month ({{
           trendList[0].date
         }}
         ~ {{ trendList[trendList.length - 1].date }})

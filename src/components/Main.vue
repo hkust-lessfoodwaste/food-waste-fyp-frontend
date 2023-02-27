@@ -26,8 +26,11 @@ setInterval(() => {
 }, slideSpeed);
 
 onMounted(async () => {
-  let currDate = {year: 2021, month: 10, day: 1}
-  let currDateObj = new Date(currDate.year, currDate.month - 1, currDate.day)
+  // let currDate = {year: 2022, month: 12, day: 1}
+  // let currDateObj = new Date(currDate.year, currDate.month - 1, currDate.day)
+  let currDateObj = new Date()
+  currDateObj = new Date(currDateObj.setDate(currDateObj.getDate()-1))
+  let currDate = {year: 1900 + currDateObj.getYear(), month: currDateObj.getMonth() + 1, day: currDateObj.getDate()}
   let dailyRes = await get("fyp_dashboard_food_waste_percentage", currDate);
 
   monthlyData.push(dailyRes)
