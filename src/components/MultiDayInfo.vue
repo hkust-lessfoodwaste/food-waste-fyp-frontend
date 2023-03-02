@@ -142,15 +142,15 @@ const initBarChart = () => {
       <div class="legend">
         <div class="icon-outer">
           <div class="box" :style="'background-color:' + highWasteColor" />
-          <div class="legend-title">severe waste</div>
+          <div class="legend-title">severe waste <br>(50%+)</div>
         </div>
         <div class="icon-outer">
           <div class="box" :style="'background-color:' + mediumWasteColor" />
-          <div class="legend-title">medium waste</div>
+          <div class="legend-title">medium waste <br>(10%-50%)</div>
         </div>
         <div class="icon-outer">
           <div class="box" :style="'background-color:' + lowWasteColor" />
-          <div class="legend-title">light/no waste</div>
+          <div class="legend-title">light/no waste <br>(0%-10%)</div>
         </div>
         <!-- <div class="icon-outer">
           <hr class="dashedline" />
@@ -190,12 +190,13 @@ const initBarChart = () => {
 }
 .legend .icon-outer {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   margin: 0.5vw 0;
 }
 .legend .icon-outer .box {
   width: 2vw;
   height: 2vw;
+  margin-top: auto;
 }
 .legend .icon-outer .dashedline {
   border-top: 3px dashed gray;

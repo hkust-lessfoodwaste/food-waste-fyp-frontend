@@ -129,15 +129,15 @@ const initDonutChart = () => {
         <div class="legend">
           <div class="icon-outer">
             <bowl :fill="highWasteColor" />
-            <div class="legend-title">severe waste</div>
+            <div class="legend-title">severe waste <br>(50%+)</div>
           </div>
           <div class="icon-outer">
             <bowl :fill="mediumWasteColor" />
-            <div class="legend-title">medium waste</div>
+            <div class="legend-title">medium waste <br>(10%-50%)</div>
           </div>
           <div class="icon-outer">
             <bowl :fill="lowWasteColor" />
-            <div class="legend-title">light/no waste</div>
+            <div class="legend-title">light/no waste <br>(0%-10%)</div>
           </div>
         </div>
       </div>

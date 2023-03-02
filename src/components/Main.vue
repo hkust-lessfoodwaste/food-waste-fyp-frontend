@@ -7,6 +7,7 @@ import stomach from "@/assets/stomach.svg";
 import lessrice from "@/assets/less_rice.svg";
 import chat from "@/assets/chat.svg";
 import takeaway from "@/assets/takeaway.svg";
+// import vislabLogo from "@/assets/vislab_logo.png"
 // import mockList from "@/assets/summary_list.json";
 
 import { get } from "@/request";
@@ -19,7 +20,7 @@ const currPage = ref(0);
 const currURL = window.location.search;
 
 const urlParams = new URLSearchParams(currURL);
-const slideSpeed = urlParams.has("speed") ? Number(urlParams.get("speed")) : 10000
+const slideSpeed = urlParams.has("speed") ? Number(urlParams.get("speed")) : 30000
 
 setInterval(() => {
   currPage.value = (currPage.value + 1) % 2;
@@ -99,12 +100,13 @@ onMounted(async () => {
           </div>
         </div>
         <div class="footer-contact">
-          <!-- <img src="@/assets/ust_logo.svg" style="width: 2vw; margin: 0 1vw"/> -->
-          <div>Food waste SSC project | contact us: xxx@ust.hk</div>
+          <img src="@/assets/vislab_logo.png" style="height: 2vw; margin: 0 1vw"/>
+          <img src="@/assets/SSC_logo.png" style="height: 2vw; margin: 0 1vw"/>
+          <div>contact us: hkust-smart-canteen@outlook.com</div>
         </div>
       </div>
     </div>
-    <div v-else>Food Waste FYP. loading resources... {{(monthlyData.length / 30 * 100).toFixed(0)}}%</div>
+    <div v-else>Food Waste Dashboard. loading resources... {{(monthlyData.length / 30 * 100).toFixed(0)}}%</div>
   </div>
 </template>
 
@@ -154,12 +156,16 @@ onMounted(async () => {
   margin: 1vh;
 }
 .footer-contact {
-  font-size: 1.3vw;
-  /* line-height: 1vw; */
-  font-family: "Neue-regular";
+  font-size: 1rem;
+  line-height: 2vw;
+  font-family: "Helvetica";
+  display: flex;
   position: absolute;
   bottom: 0;
   right: 2vw;
+  padding: 1vw;
+  box-sizing: border-box;
+  align-self: center;
 }
 @keyframes fadeInLeft {
   from {
